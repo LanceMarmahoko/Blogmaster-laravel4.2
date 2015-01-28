@@ -1,0 +1,8 @@
+Refractor
+**************
+Add flash messages
+*******************
+Create thank you for registration page
+**************************************
+Error handling
+**************
