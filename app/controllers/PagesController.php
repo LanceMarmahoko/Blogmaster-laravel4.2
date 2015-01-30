@@ -10,14 +10,15 @@ class PagesController extends \BaseController {
 	 */
 
     public function index(){
-        $posts = Post::orderBy('id', 'DESC')->get();
-        return View::make('index',compact('posts', 'updated'));
+        $posts = Post::wherePublished(true)->orderBy('id', 'DESC')->get();
+        return View::make('index',compact('posts'));
     }
 
     public function dashboard(){
         //User sees posts
-        $posts = Post::orderBy('id', 'DESC')->get();
-        return View::make('dashboard.show',compact('posts'));
+        $published = Post::wherePublished(true)->orderBy('id', 'DESC')->get();
+        $unpublished = Post::wherePublished(false)->orderBy('id', 'DESC')->get();
+        return View::make('dashboard.show',compact('published', 'unpublished'));
     }
 
 }

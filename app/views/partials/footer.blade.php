@@ -10,5 +10,16 @@
 {{HTML::script("js/jquery.placeholder.js")}}
 {{HTML::script("js/jquery.stacktable.js")}}
 {{HTML::script("js/application.js")}}
+
+{{HTML::script("assets/ckeditor/plugins/styles/styles/default.js")}}
+{{HTML::script("assets/ckeditor/plugins/pastefromword/filter/default.js")}}
+{{HTML::script("assets/ckeditor/plugins/templates/templates/default.js")}}
+{{HTML::script("assets/ckeditor/config.js")}}
+
+{{HTML::script("assets/ckeditor/ckeditor.js")}}
+
+<script>
+    CKEDITOR.replace( 'editor_area' );
+</script>
 </body>
 </html>

@@ -22,25 +22,25 @@ class PostsController extends \BaseController {
         //Get input before validation
         $input = Input::only('title','body');
         //Validate input
-        $this->postValidation->validate($input); 
-        
-        //Collect and split input after validation
+        $this->postValidation->validate($input);  
+
+        $publish = Input::get('publish');
+        /*********REPEATED AREA**********************************************/
         $title = $input['title'];
-        $body = $input['body'];  
-        
-        //Create excerpt
+        $body = $input['body'];
         $excerpt = Str::words($body, 70);
-        
+        $booleanPublish = isset($publish['publish']) ? 1 : 0;
+        $data = ['published' => $booleanPublish,'excerpt' => $excerpt, 'title'=> $title, 'body' => $body];
+        /********************************************************************/
+
         //Create the record
-        Post::create(['excerpt' => $excerpt, 'title'=> $title, 'body' => $body]);
+        Post::create($data);
         //redirect and show flash message?
         return Redirect::route('dashboard');
     }
         
-        
-        
     public function show($id){
-        $post = Post::findOrFail($id);
+        $post = Post::wherePublished(true)->findOrFail($id);
         return View::make('posts.show', compact('post'));
     }
 
@@ -51,12 +51,27 @@ class PostsController extends \BaseController {
     }
 
     public function update($id){
-        $post = Post::whereId($id)->firstOrFail();
         $input = Input::only('title','body');
         $this->postValidation->validate($input);
-        $post->fill($input)->save();
+
+        $publish = Input::only('published');
+        $booleanPublish = isset($publish['published']) ? 1 : 0;
+        // dd($booleanPublish);
+        /*********REPEATED AREA**********************************************/
+        $title = $input['title'];
+        $body = $input['body'];
+        $excerpt = Str::words($body, 70);
+        $data = ['published' => $booleanPublish,'excerpt' => $excerpt, 'title'=> $title, 'body' => $body];
+        /********************************************************************/
+        //check input checkbox exists, if yes try publish() otherwise unpublish()
+        //now check isset the check box just so we dont bank null, can either be 1 or 0 
+        // ..this is just so we know on the front end
+
+        $post = Post::whereId($id)->firstOrFail();
+        $post->fill($data)->save();
         return Redirect::back();
     }
+
 
     public function destroy($id){
         return "helloWorld from destroy";

@@ -8,20 +8,13 @@
 		"laravel/framework": "4.2.*",
 		"laracasts/flash": "~1.0",
         "laracasts/validation": "~1.0",
-
 		"zizaco/entrust": "1.2.*@dev",
 		"zizaco/confide": "~4.0@dev",
-
 		"mailchimp/mailchimp": "~2.0",
-
 		"barryvdh/laravel-ide-helper": "~1.11",
-		
         "cviebrock/eloquent-sluggable": "2.*",
         "cviebrock/eloquent-taggable": "0.*",
-		"mews/purifier": "dev-master",
-
-		"itsgoingd/clockwork": "1.*"
-		
+		"mews/purifier": "dev-master"
 	},
 	"require-dev": {
     	"way/generators": "~2.0",
