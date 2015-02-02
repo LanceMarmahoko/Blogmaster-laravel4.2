@@ -28,6 +28,8 @@ Route::post('/storesession',['as' => 'storesession', 'uses' => 'SessionsControll
 
 Route::get('/dashboard',['as' => 'dashboard', 'uses' => 'PagesController@dashboard']);
 
-Route::resource('dashboard','PostsController', ['only' => ['edit','destroy','update','create','store']]);
+Route::resource('dashboard','PostsController', ['only' => ['edit','update','create','store']]);
 
-Route::get('/{id}',['as' => 'showpost', 'uses' => 'PostsController@show']);
+Route::get('/dashboard/{id}/destroy',['as' => 'destroy', 'uses' => 'PostsController@destroy']);
+
+Route::get('/{id}',['as' => 'showpost', 'uses' => 'PagesController@show']);

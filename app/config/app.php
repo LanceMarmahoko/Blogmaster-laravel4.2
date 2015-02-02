@@ -121,11 +121,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-
-
 		'Way\Generators\GeneratorsServiceProvider',
-                'Laracasts\Flash\FlashServiceProvider', //easy flash messages //has alias
 		'Laracasts\Validation\ValidationServiceProvider',
+                'Laracasts\Flash\FlashServiceProvider', //easy flash messages //has alias
                 'Zizaco\Entrust\EntrustServiceProvider', //has alias
                 'Mews\Purifier\PurifierServiceProvider', //has alias //HTML Purifier is a standards-compliant HTML filter library written in PHP
                 'Cviebrock\EloquentSluggable\SluggableServiceProvider',

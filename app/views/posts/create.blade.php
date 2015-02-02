@@ -1,7 +1,7 @@
 @extends('_templates.forms')
 
 @section('content')
-    {{Form::open(['route' => 'dashboard.store'])}}
+    {{Form::open(['route' => 'dashboard.store', 'files'=>true])}}
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
@@ -9,6 +9,13 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::file('image', ['class'=>'data-bfi-disabled','title'=>'Search for a file to add', 'data-filename-placement'=>'inside']) }}
+                </div>
+            </div>
+        </div>        
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">

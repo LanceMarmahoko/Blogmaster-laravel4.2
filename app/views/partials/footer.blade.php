@@ -4,6 +4,7 @@
 {{HTML::script("js/bootstrap.min.js")}}
 {{HTML::script("js/bootstrap-select.js")}}
 {{HTML::script("js/bootstrap-switch.js")}}
+{{HTML::script("js/bootstrap.file-input.js")}}
 {{HTML::script("js/flatui-checkbox.js")}}
 {{HTML::script("js/flatui-radio.js")}}
 {{HTML::script("js/jquery.tagsinput.js")}}
@@ -15,11 +16,12 @@
 {{HTML::script("assets/ckeditor/plugins/pastefromword/filter/default.js")}}
 {{HTML::script("assets/ckeditor/plugins/templates/templates/default.js")}}
 {{HTML::script("assets/ckeditor/config.js")}}
-
 {{HTML::script("assets/ckeditor/ckeditor.js")}}
 
 <script>
     CKEDITOR.replace( 'editor_area' );
-</script>
+    $('input[type=file]').bootstrapFileInput();
+	$('.file-inputs').bootstrapFileInput();
+	</script>
 </body>
 </html>

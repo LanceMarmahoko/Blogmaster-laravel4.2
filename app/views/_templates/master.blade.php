@@ -1,7 +1,7 @@
 @include('partials.header')
 @include('partials.nav')
 <div class="row demo-row">    
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-sm-12">
         @yield('content')
     </div>
 </div> <!-- /row -->
