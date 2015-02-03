@@ -21,7 +21,6 @@ class PostsController extends \BaseController {
         return View::make('posts.edit', compact('post'));
     }
 
-
     public function store(){
         $input = Input::only('title','body');
         $this->postValidation->validate($input);  
@@ -40,9 +39,8 @@ class PostsController extends \BaseController {
         'image' => $filename
         ];
         Post::create($data);
-        return Redirect::route('dashboard');
+        return Redirect::back();
     }
-
 
     public function update($id){
         $post = Post::whereId($id)->firstOrFail();
@@ -62,20 +60,36 @@ class PostsController extends \BaseController {
         return Redirect::back();
     }
 
-
-    public function destroy($id){
+    public function publish($id){
         $post = Post::whereId($id)->firstOrFail();
-        $post->destroy($id);
-        return Redirect::home();
+        do_boolean_publish($post, 'published', $id, 1);
+        return Redirect::back();
+    }
+
+    public function unpublish($id){
+        $post = Post::whereId($id)->firstOrFail();
+        do_boolean_publish($post, 'published', $id, 0);
+        return Redirect::back();
     }
 
     public function softDelete($id){
         $post = Post::whereId($id)->firstOrFail();
-        $publishStatus = 0;
-        $data = ['published' => $publishStatus];
-        $post->fill($data)->save();
+        do_boolean_publish($post, 'published', $id, 0);
         $post->delete($id);
-        return Redirect::home();
+        return Redirect::back();
+    }
+
+    public function restore($id){
+        $post = Post::onlyTrashed($id)->firstOrFail();
+        do_boolean_publish($post, 'published', $id, 0);
+        $post->restore($id);
+        return Redirect::back();
+    }
+
+    public function destroy($id){
+        $post = Post::onlyTrashed($id)->firstOrFail();
+        $post->forceDelete($id);
+        return Redirect::back();
     }
 
 }

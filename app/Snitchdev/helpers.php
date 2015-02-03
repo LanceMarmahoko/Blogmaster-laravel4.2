@@ -42,3 +42,9 @@ function get_excerpt($get_body){
         $excerpt = Str::words($body, 70);
         return $excerpt;
 }
+
+function do_boolean_publish($post, $item, $id, $bool){
+        $data = [$item => $bool];
+        $do_publish = $post->fill($data)->save();
+        return $do_publish;
+}
