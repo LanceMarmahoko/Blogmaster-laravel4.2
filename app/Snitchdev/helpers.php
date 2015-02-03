@@ -11,7 +11,7 @@ function get_file_name($fieldname){
 
     if (Input::hasFile($fieldname)) {
 	    $file = Input::file($fieldname);
-	    $destination = '/img/' . Auth::user()->username . '/';
+	    $destination = '/postImages/' . Auth::user()->username . '/';
 	    $setname = str_random(6) . '_' . $file->getClientOriginalName();
 	    $file->move(public_path() . $destination, $setname);
 	    $filename = $destination . $setname;
@@ -26,7 +26,7 @@ function get_file_name($fieldname){
 function update_file_name($post, $fieldname){
 	if (null !== Input::file($fieldname)){
 	    $file = Input::file($fieldname);
-	    $destination = '/img/' . Auth::user()->username . '/';
+	    $destination = '/postImages/' . Auth::user()->username . '/';
 	    $setname = str_random(6) . '_' . $file->getClientOriginalName();
 	    $file->move(public_path() . $destination, $setname);
 	    $filename = $destination . $setname;

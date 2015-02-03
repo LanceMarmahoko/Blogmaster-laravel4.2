@@ -27,8 +27,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::label('published', 'Publish:') }}
-                    {{ Form::checkbox('published',null,null,['id' => 'published']) }}
+                    <label class="checkbox" for="publish">
+                      <input type="checkbox" name="publish" id="publish" data-toggle="checkbox">
+                      Publish
+                    </label>
                 </div>
             </div>
         </div>
