@@ -2,11 +2,10 @@
 
 use Snitchdev\Validation\PostValidation;
 
-
 class PostsController extends \BaseController {
 
     protected $postValidation;
-    
+
     public function __construct(PostValidation $postValidation) { 
         $this->postValidation = $postValidation;
         $this->beforeFilter('currentUser', ['create', 'store', 'update','destroy']);
@@ -67,6 +66,15 @@ class PostsController extends \BaseController {
     public function destroy($id){
         $post = Post::whereId($id)->firstOrFail();
         $post->destroy($id);
+        return Redirect::home();
+    }
+
+    public function softDelete($id){
+        $post = Post::whereId($id)->firstOrFail();
+        $publishStatus = 0;
+        $data = ['published' => $publishStatus];
+        $post->fill($data)->save();
+        $post->delete($id);
         return Redirect::home();
     }
 

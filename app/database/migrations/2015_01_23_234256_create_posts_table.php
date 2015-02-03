@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration {
                 $table->boolean('published');
                 $table->text('image');
                 $table->text('body');
+                $table->softDeletes();
                 $table->timestamps();
             });
 	}

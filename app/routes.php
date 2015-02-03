@@ -32,4 +32,6 @@ Route::resource('dashboard','PostsController', ['only' => ['edit','update','crea
 
 Route::get('/dashboard/{id}/destroy',['as' => 'destroy', 'uses' => 'PostsController@destroy']);
 
+Route::get('/dashboard/{id}/softDelete',['as' => 'trash', 'uses' => 'PostsController@softDelete']);
+
 Route::get('/{id}',['as' => 'showpost', 'uses' => 'PagesController@show']);

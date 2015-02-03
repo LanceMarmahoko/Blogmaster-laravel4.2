@@ -1,7 +1,11 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Post extends Eloquent{
+
+    use SoftDeletingTrait;
+    protected $table = 'posts';
 
     protected $fillable =['user_id','title','excerpt','published','body', 'image'];
     

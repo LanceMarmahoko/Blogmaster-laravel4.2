@@ -26,7 +26,8 @@ class PagesController extends \BaseController {
         //User sees posts
         $published = Post::wherePublished(true)->orderBy('id', 'DESC')->get();
         $unpublished = Post::wherePublished(false)->orderBy('id', 'DESC')->get();
-        return View::make('dashboard.show',compact('published', 'unpublished'));
+        $trashed = Post::onlyTrashed()->orderBy('id', 'DESC')->get();
+        return View::make('dashboard.show',compact('published', 'unpublished','trashed'));
     }
 
 }
