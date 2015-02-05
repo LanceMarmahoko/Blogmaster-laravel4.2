@@ -43,7 +43,9 @@
                     <div class="modal-dialog"> 
                         <div class="modal-content"> 
                             <div class="modal-header">Trash Post</div> 
-                            <div class="modal-body">Moving this post to trash will unpublish it automatically, Are you sure you want to do this? </div> 
+                            <div class="modal-body">
+                                Moving this post to trash will unpublish it automatically, Are you sure you want to do this? 
+                            </div> 
                             <div class="modal-footer"> 
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Eish!, not really you know.</button>
                                 <a class="btn btn-danger danger" href="/dashboard/{{$published->id}}/softDelete">Yea, Just do it.</a> 

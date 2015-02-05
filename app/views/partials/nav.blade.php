@@ -14,8 +14,8 @@
             <li>{{HTML::linkRoute('login', 'Login') }}</li>
         @else
             <li>{{HTML::linkRoute('dashboard.create', 'Create') }}</li>
-            <li>{{HTML::linkRoute('edituser', 'My Profile') }}</li>
-            <li>{{HTML::linkRoute('logout', 'Logout') }}</li>
+            <li>{{HTML::linkRoute('settings', 'Settings') }}</li>
+            <li>{{HTML::linkRoute('logout', 'Logout') }}</li> 
         @endif
        </ul>
     </div><!-- /.navbar-collapse -->

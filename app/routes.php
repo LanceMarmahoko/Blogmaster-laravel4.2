@@ -20,9 +20,13 @@ Route::get('/register',['as' => 'registeruser', 'uses' => 'UsersController@creat
 
 Route::post('/register',['as' => 'registeruser', 'uses' => 'UsersController@store']);
 
-Route::get('/dashboard/myprofile/{username}/edit',['as' => 'edituser', 'uses' => 'UsersController@edit']);
 
-Route::get('/dashboard/myprofile/{username}/update',['as' => 'updateuser', 'uses' => 'UsersController@update']);
+Route::resource('settings','SettingsController',['only' => ['update','create','store']]);
+Route::get('settings/{username}/edit',['as' => 'settings', 'uses' => 'SettingsController@edit']);
+
+// Route::get('/dashboard/settings/{username}/update',['as' => 'updateuser', 'uses' => 'UsersController@update']);
+
+
 
 Route::get('/login',['as' => 'login', 'uses' => 'SessionsController@create']);
 
@@ -38,7 +42,7 @@ Route::get('/dashboard/{id}/unpublish',['as' => 'unpublish', 'uses' => 'PostsCon
 
 Route::get('/dashboard/{id}/publish',['as' => 'publish', 'uses' => 'PostsController@publish']);
 
-Route::get('/dashboard/{id}/destroy',['as' => 'destroy', 'uses' => 'PostsController@destroy']);
+Route::get('/dashboard/{id}/destroy',['as' => 'dest{username}/roy', 'uses' => 'PostsController@destroy']);
 
 Route::get('/dashboard/{id}/softDelete',['as' => 'trash', 'uses' => 'PostsController@softDelete']);
 
