@@ -10,20 +10,18 @@ class CreatePostsTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-            Schema::create('posts', function(Blueprint $table)
-            {
-                $table->increments('id');
-                $table->integer('user_id');
-                $table->string('title');
-                $table->string('excerpt');
-                $table->boolean('published');
-                $table->text('image');
-                $table->text('body');
-                $table->softDeletes();
-                $table->timestamps();
-            });
+	public function up(){
+        Schema::create('posts', function(Blueprint $table){
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->string('title');
+            $table->string('excerpt');
+            $table->boolean('published');
+            $table->text('image');
+            $table->text('body');
+            $table->softDeletes();
+            $table->timestamps();
+        });
 	}
 
 

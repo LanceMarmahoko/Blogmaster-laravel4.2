@@ -18,7 +18,6 @@ class SessionsController extends \BaseController {
     public function store(){
         $input = Input::only('email','password');
         $this->sessionValidation->validate($input);
-        
         if (Auth::attempt($input)){
             return Redirect::route('dashboard');
         } 

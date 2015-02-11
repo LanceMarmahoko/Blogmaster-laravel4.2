@@ -1,7 +1,6 @@
 @extends('_templates.forms')
 @section('content')
     {{Form::model($user->settings, ['method'=>'PATCH', 'route' => ['settings.update', $user->username]])}}
-
         <div class="row">
             <div class="col-lg-6 col-md-offset-3">
                 <div class="form-group">
@@ -15,6 +14,5 @@
                 {{ Form::submit('Submit',['class' => 'btn btn-default mrs']) }}
             </div>
         </div>
-
     {{Form::close()}}
 @stop()

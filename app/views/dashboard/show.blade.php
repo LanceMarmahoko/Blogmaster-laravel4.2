@@ -19,7 +19,7 @@
                   <p>{{$published->title}}</p>
                   <footer>
                   {{$published->created_at->diffForHumans()}}
-                    <a href="/dashboard/{{$published->id}}/edit">Edit</a>
+                    <a href="/post/{{$published->id}}/edit">Edit</a>
                     <a href="#" data-toggle="modal" data-target="#confirmSoftDeletePublished">Trash</a>
                     <a href="#" data-toggle="modal" data-target="#confirmUnpublish">Unpublish</a>
                   </footer>
@@ -33,7 +33,7 @@
                             <div class="modal-body">Are you sure you want to unpublish this post? </div> 
                             <div class="modal-footer"> 
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Nope</button>
-                                <a class="btn btn-danger danger" href="/dashboard/{{$published->id}}/unpublish">Do it aready!</a> 
+                                <a class="btn btn-danger danger" href="/post/{{$published->id}}/unpublish">Do it aready!</a> 
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             </div> 
                             <div class="modal-footer"> 
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Eish!, not really you know.</button>
-                                <a class="btn btn-danger danger" href="/dashboard/{{$published->id}}/softDelete">Yea, Just do it.</a> 
+                                <a class="btn btn-danger danger" href="/post/{{$published->id}}/softDelete">Yea, Just do it.</a> 
                             </div>
                         </div>
                     </div>
@@ -64,12 +64,11 @@
                   <p>{{$unpublished->title}}</p>
                   <footer>
                   {{$unpublished->created_at->diffForHumans()}}
-                    <a href="/dashboard/{{$unpublished->id}}/edit">Edit</a>
+                    <a href="/post/{{$unpublished->id}}/edit">Edit</a>
                     <a href="#" data-toggle="modal" data-target="#confirmSoftDeleteUnPublished">Trash</a>
                     <a href="#" data-toggle="modal" data-target="#confirmPublish">Publish</a>
                   </footer>
                 </blockquote>
-
                 <!--Confirm Unpublish post-->
                 <div class="modal fade" id="confirmPublish" tabindex="-1" role="dialog" aria-labelledby="confirmPublishLabel" aria-hidden="true"> 
                     <div class="modal-dialog"> 
@@ -78,7 +77,7 @@
                             <div class="modal-body">Are you sure you want to publish this post? </div> 
                             <div class="modal-footer"> 
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Nope</button>
-                                <a class="btn btn-danger danger" href="/dashboard/{{$unpublished->id}}/publish">Do it aready!</a> 
+                                <a class="btn btn-danger danger" href="/post/{{$unpublished->id}}/publish">Do it aready!</a> 
                             </div>
                         </div>
                     </div>
@@ -91,7 +90,7 @@
                             <div class="modal-body"> Are you sure you want to move this post to your trash? </div> 
                             <div class="modal-footer"> 
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Nope, Just changed my mind :)</button>
-                                <a class="btn btn-danger danger" href="/dashboard/{{$unpublished->id}}/softDelete">Yep, Continue!</a> 
+                                <a class="btn btn-danger danger" href="/post/{{$unpublished->id}}/softDelete">Yep, Continue!</a> 
                             </div>
                         </div>
                     </div>
@@ -106,7 +105,7 @@
                   <p>{{$trashed->title}}</p>
                   <footer>
                   {{$trashed->created_at->diffForHumans()}}
-                  <a href="/dashboard/{{$trashed->id}}/restore">Restore</a> 
+                  <a href="/post/{{$trashed->id}}/restore">Restore</a> 
                     <a href="#" data-toggle="modal" data-target="#confirmHardDelete">Delete</a>
                   </footer>
                 </blockquote>
@@ -118,14 +117,13 @@
                             <div class="modal-body"> Are you sure you want to delete this post permanantly? </div> 
                             <div class="modal-footer"> 
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Nope, Just changed my mind :)</button>
-                                <a class="btn btn-danger danger" href="/dashboard/{{$trashed->id}}/destroy">Yep, Continue!</a> 
+                                <a class="btn btn-danger danger" href="/post/{{$trashed->id}}/destroy">Yep, Continue!</a> 
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-
       </div>
     </div>
 </div> 

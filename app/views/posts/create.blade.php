@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    {{Form::open(['route' => 'dashboard.store', 'files'=>true])}}
+    {{Form::open(['route' => 'post.store', 'files'=>true])}}
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
@@ -18,11 +18,8 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon">@</span>
                     {{ Form::file('image', ['class'=>'form-control','title'=>'Add Image', 'data-filename-placement'=>'inside']) }}
-                  </div> 
-                </div>
+                </div> 
             </div>
         </div>  
 
