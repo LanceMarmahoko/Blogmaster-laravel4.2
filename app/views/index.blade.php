@@ -1,15 +1,11 @@
 @extends('_templates.master')
 @section('content')
-<div>
     @foreach($posts as $post)
-        <div>
-            <h4>{{$post->title}}</h4>
-            <h4>By {{$post->user['username']}}</h4>
-            <h5>Published {{$post->created_at->diffForHumans()}}</h5>
-            {{HTML::image($post->image) }}
-            <p>{{$post->excerpt}}</p>
-            <p>{{strlen($post->excerpt) > 150 ? '...<a href="/' . $post->id . '" class="btn btn-inverse">Read More</a>' : '.'}}</p>
-        </div>
+        {{$post->title}}<br>
+        By {{display_name_of($post->user->username) == "" ? $post->user->username : display_name_of($post->user->username);}}<br>
+        Published {{$post->created_at->diffForHumans()}}<br>
+        {{HTML::image($post->image) }}<br>
+        {{$post->excerpt}}<br>
+        {{strlen($post->excerpt) > 150 ? '...<a href="/' . $post->id . '">Read More</a>' : '.'}}<br>
     @endforeach
-</div>
 @stop

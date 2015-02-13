@@ -13,17 +13,12 @@ class PagesController extends \BaseController {
     }
 
     public function index(){
-        $posts = Post::wherePublished(true)->with('user')->orderBy('id', 'DESC')->get();
+        $posts = Post::wherePublished(true)->orderBy('id', 'DESC')->get();
         return View::make('index',compact('posts'));
     }
 
-    public function show($id){
-        $post = Post::wherePublished(true)->with('user')->findOrFail($id);
-        return View::make('posts.show', compact('post'));
-    }
 
     public function dashboard(){
-        //User sees posts
         $published = Post::wherePublished(true)->orderBy('id', 'DESC')->get();
         $unpublished = Post::wherePublished(false)->orderBy('id', 'DESC')->get();
         $trashed = Post::onlyTrashed()->orderBy('id', 'DESC')->get();

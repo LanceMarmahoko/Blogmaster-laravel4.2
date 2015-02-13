@@ -37,6 +37,19 @@ function update_file_name($post, $fieldname){
         return $filename;
 }
 
+function get_sttings_data($row_id, $column){
+        $settings = Settings::whereId($row_id)->firstOrFail();
+        $result = $settings[$column];
+        return $result;
+}
+
+function display_name_of($username){
+		$user = User::with('settings')->whereUsername($username)->firstOrFail();
+		$row_id = $user->settings->id;
+		$result = get_sttings_data($row_id, 'display_name');
+        return $result;
+}
+
 function get_excerpt($get_body){
         $body = Input::all()[$get_body];
         $excerpt = Str::words($body, 70);
