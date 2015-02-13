@@ -8,7 +8,6 @@ function get_publish_status($status){
 }
 
 function get_file_name($fieldname){
-
     if (Input::hasFile($fieldname)) {
 	    $file = Input::file($fieldname);
 	    $destination = '/postImages/' . Auth::user()->username . '/';
