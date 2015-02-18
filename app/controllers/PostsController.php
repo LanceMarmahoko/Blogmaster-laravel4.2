@@ -12,36 +12,36 @@ class PostsController extends \BaseController {
     }
 
     public function show($id){
-        
         $post = Post::with('user')->wherePublished(true)->findOrFail($id);
-        $username = $post->user->username;
-        $display_name = display_name_of($username);
-        return View::make('posts.show', compact('post','author'));
+        return View::make('posts.show', compact('post'));
     }
     
     public function create(){
-        return View::make('posts.create');
+        $categories_list = Categories::lists('name', 'id');
+        return View::make('posts.create',compact('categories_list'));
     }
 
 
     public function edit($id){
+        $categories_list = Categories::lists('name', 'id');
+        $publish_status = get_value('published',$id,'Post');
         $post = Post::findOrFail($id);
-        return View::make('posts.edit', compact('post'));
+        return View::make('posts.edit', compact('post','publish_status','categories_list'));
     }
 
     public function store(){
-        $input = Input::only('title','body');
+        $input = Input::only('title','body','category');
         $this->postValidation->validate($input);  
         $publishStatus = get_publish_status('publish');
         $filename = get_file_name('image');
         $excerpt = get_excerpt('body');
-
         $user_id = Auth::user()->id;
 
         $data = [
         'user_id' => $user_id,
         'title' => $input['title'],
         'body' => $input['body'],
+        'category' => $input['category'],
         'excerpt' => $excerpt,
         'published' => $publishStatus,
         'image' => $filename
@@ -52,13 +52,14 @@ class PostsController extends \BaseController {
 
     public function update($id){
         $post = Post::whereId($id)->firstOrFail();
-        $input = Input::only('title','body');
+        $input = Input::only('title','body','category');
         $this->postValidation->validate($input);
         $publishStatus = get_publish_status('publish');
         $excerpt = get_excerpt('body');
         $filename = update_file_name($post,'image');
         $data = [
         'image' => $filename,
+        'category' => $input['category'],
         'published' => $publishStatus,
         'excerpt' => $excerpt, 
         'title'=> $input['title'], 

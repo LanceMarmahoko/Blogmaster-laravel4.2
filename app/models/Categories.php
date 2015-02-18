@@ -2,16 +2,15 @@
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Category extends \Eloquent{
+class Categories extends \Eloquent{
 
     use SluggableTrait;
-	use SoftDeletingTrait;
-	
+
 	protected $table = 'categories';
+    protected $sluggable = ['build_from' => 'name','save_to' => 'slug'];
 	protected $fillable = ['name', 'slug'];
 
     public function post(){
         return $this->hasMany('Post');
     }
-
 }

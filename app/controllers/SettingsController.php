@@ -13,10 +13,10 @@ class SettingsController extends \BaseController {
 			return Redirect::home();
 		}
 
-		return View::make('settings.edit')->withUser($user);
+		return View::make('settings.edit', compact('user'));
 	}
 
-	public function update($username){
+	public function update_username($username){
 		$input = Input::only('display_name');
 		$user = User::with('settings')->whereUsername($username)->firstOrFail();
 		$data = ['display_name' => $input['display_name']];
@@ -24,4 +24,11 @@ class SettingsController extends \BaseController {
 		return Redirect::back();
 	}
 
+	public function add_categories(){
+		Categories::create(['name' => 'ooooo', 'slug' => 'ooooo-is-azxzndfdfother-slug']); 
+	}
+
+	public function update_categories(){
+		//
+	}
 }

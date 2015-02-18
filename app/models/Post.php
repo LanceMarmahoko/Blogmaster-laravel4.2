@@ -10,14 +10,12 @@ class Post extends Eloquent implements SluggableInterface{
 	use SoftDeletingTrait;
 
     protected $table = 'posts';
+    protected $fillable = ['user_id','slug','category','title','excerpt','published','body', 'image'];
     protected $sluggable = ['build_from' => 'title','save_to' => 'slug'];
-    protected $fillable = ['user_id','slug','title','excerpt','published','body', 'image'];
     
     function user(){
         return $this->belongsTo('User');
     }
 
-    public function category(){
-        return $this->belongsTo('Category');
-    }
+
 }

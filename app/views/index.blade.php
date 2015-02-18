@@ -4,7 +4,7 @@
         {{$post->title}}<br>
         {{HTML::image($post->image) }}<br>
         @include('partials.post.post_details') {{--time, author--}}
-        {{$post->excerpt}}<br>
-        {{strlen($post->excerpt) > 150 ? HTML::link('/post/'. $post->id, 'Read More') : '.'}}<br>
+        {{$excerpt = $post->excerpt}}<br>
+        {{ get_read_more('Read More','/post/'. $post->id, $excerpt, 150) }}<br>
     @endforeach
 @stop
