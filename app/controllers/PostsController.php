@@ -8,20 +8,14 @@ class PostsController extends \BaseController {
 
     public function __construct(PostValidation $postValidation) { 
         $this->postValidation = $postValidation;
-        $this->beforeFilter('currentUser', ['create', 'store', 'update','destroy']);
+        $this->beforeFilter('currentUser', ['only' => ['create','store','update','destroy']]);
     }
 
     public function show($id){
+        
         $post = Post::with('user')->wherePublished(true)->findOrFail($id);
         $username = $post->user->username;
         $display_name = display_name_of($username);
-
-        if($display_name == ""){
-            $author =  $username;
-        } else{
-            $author =  $display_name;
-        }
-
         return View::make('posts.show', compact('post','author'));
     }
     

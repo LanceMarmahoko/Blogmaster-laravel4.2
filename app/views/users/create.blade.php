@@ -1,6 +1,5 @@
 @extends('_templates.forms')
 
-
 @section('content')
     {{Form::open(['route' => 'registeruser'])}}
     {{ Form::text('username', null, ['placeholder' => 'Username']) }}<br>

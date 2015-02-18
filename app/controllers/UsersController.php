@@ -31,6 +31,8 @@ class UsersController extends \BaseController {
         $this->userRegValidation->validate($input);
         //create record using validated $var
         User::create($input); 
+        $get_user = User::whereEmail($input['email'])->first();
+        Settings::create(['user_id' => $get_user->id]); 
         //redirect to login
         return Redirect::route('login');
     }

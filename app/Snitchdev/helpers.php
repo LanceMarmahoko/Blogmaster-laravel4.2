@@ -36,16 +36,19 @@ function update_file_name($post, $fieldname){
         return $filename;
 }
 
-function get_sttings_data($row_id, $column){
-        $settings = Settings::whereId($row_id)->firstOrFail();
-        $result = $settings[$column];
-        return $result;
+
+function get_column($column,$id,$model){ //expect $row_id and $column
+        $settings = $model::whereId($id)->firstOrFail(); //get row where the id is eq to this $row_id and store it in $settings
+        $result = $settings[$column]; //look for and find this $column
+        return $result; //get_sttings_data($row_id, $column);
 }
 
-function display_name_of($username){
-		$user = User::with('settings')->whereUsername($username)->firstOrFail();
-		$row_id = $user->settings->id;
-		$result = get_sttings_data($row_id, 'display_name');
+function display_name_of($username){ //expect a $username
+		$user = User::with('settings')->whereUsername($username)->firstOrFail(); //find row where the username is identical to $username, also bring forth the settings accociated with this $username
+		$id = $user->settings->id; //get this $username's id and store it in $row_id
+		                               //Now, using this function -> get_sttings_data();
+		                               //find the 
+		$result = get_column('display_name',$id,'Settings');
         return $result;
 }
 

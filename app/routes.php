@@ -46,9 +46,9 @@ Route::post('/storesession',['as' => 'storesession', 'uses' => 'SessionsControll
 Posts Routes
 */
 Route::resource('post','PostsController', ['only' => ['edit','update','create','store']]);
-Route::get('/post/{id}','PostsController@show');
 Route::get('/post/{id}/unpublish',['as' => 'unpublish', 'uses' => 'PostsController@unpublish']);
 Route::get('/post/{id}/publish',['as' => 'publish', 'uses' => 'PostsController@publish']);
 Route::get('/post/{id}/destroy',['as' => 'destroy', 'uses' => 'PostsController@destroy']);
 Route::get('/post/{id}/softDelete',['as' => 'trash', 'uses' => 'PostsController@softDelete']);
 Route::get('/post/{id}/restore',['as' => 'restore', 'uses' => 'PostsController@restore']);
+Route::get('/post/{id}','PostsController@show');

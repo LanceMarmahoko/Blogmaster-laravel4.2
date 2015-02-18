@@ -2,10 +2,9 @@
 @section('content')
     @foreach($posts as $post)
         {{$post->title}}<br>
-        By {{display_name_of($post->user->username) == "" ? $post->user->username : display_name_of($post->user->username);}}<br>
-        Published {{$post->created_at->diffForHumans()}}<br>
         {{HTML::image($post->image) }}<br>
+        @include('partials.post.post_details') {{--time, author--}}
         {{$post->excerpt}}<br>
-        {{strlen($post->excerpt) > 150 ? '...<a href="/' . $post->id . '">Read More</a>' : '.'}}<br>
+        {{strlen($post->excerpt) > 150 ? HTML::link('/post/'. $post->id, 'Read More') : '.'}}<br>
     @endforeach
 @stop
