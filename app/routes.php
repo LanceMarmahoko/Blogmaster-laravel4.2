@@ -32,9 +32,14 @@ Route::post('/register',['as' => 'registeruser', 'uses' => 'UsersController@stor
 /*
 Settings Routes
 */
+Route::post('settings/create_and_store_category',['as' => 'create_and_store_category', 'uses' => 'CategoryController@store']);
 Route::get('settings/{username}/edit',['as' => 'settings.edit', 'uses' => 'SettingsController@edit']);
-Route::get('settings/{username}/display',['as' => 'settings.update_username', 'uses' => 'SettingsController@update_username']);
-Route::get('settings/{username}/categories',['as' => 'settings.update_categories', 'uses' => 'SettingsController@update_categories']);
+Route::any('settings/{username}/update_displayname',['as' => 'update_displayname', 'uses' => 'SettingsController@update_displayname']);
+Route::any('settings/{username}/update_categories',['as' => 'update_categories', 'uses' => 'SettingsController@update_categories']);
+
+/*
+Category Routes
+*/
 Route::get('/fire','SettingsController@add_categories');
 /*
 Sessions Routes

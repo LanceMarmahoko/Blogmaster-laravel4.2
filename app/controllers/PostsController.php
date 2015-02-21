@@ -17,34 +17,32 @@ class PostsController extends \BaseController {
     }
     
     public function create(){
-        $categories_list = Categories::lists('name', 'id');
-        return View::make('posts.create',compact('categories_list'));
+        $category_list = Category::lists('name', 'id');
+        return View::make('posts.create',compact('category_list'));
     }
 
-
     public function edit($id){
-        $categories_list = Categories::lists('name', 'id');
+        $category_list = Category::lists('name', 'id');
         $publish_status = get_value('published',$id,'Post');
         $post = Post::findOrFail($id);
-        return View::make('posts.edit', compact('post','publish_status','categories_list'));
+        return View::make('posts.edit', compact('post','publish_status','category_list'));
     }
 
     public function store(){
-        $input = Input::only('title','body','category');
+        $input = Input::only('title','body','category_id');
         $this->postValidation->validate($input);  
         $publishStatus = get_publish_status('publish');
         $filename = get_file_name('image');
         $excerpt = get_excerpt('body');
         $user_id = Auth::user()->id;
-
         $data = [
-        'user_id' => $user_id,
-        'title' => $input['title'],
-        'body' => $input['body'],
-        'category' => $input['category'],
-        'excerpt' => $excerpt,
-        'published' => $publishStatus,
-        'image' => $filename
+            'title' => $input['title'],
+            'category_id' => $input['category_id'],
+            'body' => $input['body'],
+            'excerpt' => $excerpt,
+            'published' => $publishStatus,
+            'image' => $filename
+
         ];
         Post::create($data);
         return Redirect::back();
@@ -52,19 +50,21 @@ class PostsController extends \BaseController {
 
     public function update($id){
         $post = Post::whereId($id)->firstOrFail();
-        $input = Input::only('title','body','category');
+        $input = Input::only('title','body','category_id');
         $this->postValidation->validate($input);
         $publishStatus = get_publish_status('publish');
         $excerpt = get_excerpt('body');
         $filename = update_file_name($post,'image');
+
         $data = [
-        'image' => $filename,
-        'category' => $input['category'],
-        'published' => $publishStatus,
-        'excerpt' => $excerpt, 
-        'title'=> $input['title'], 
-        'body' => $input['body']
+            'image' => $filename,
+            'category_id' => $input['category_id'],
+            'published' => $publishStatus,
+            'excerpt' => $excerpt, 
+            'title'=> $input['title'], 
+            'body' => $input['body']
         ];
+
         $post->fill($data)->save();
         return Redirect::back();
     }

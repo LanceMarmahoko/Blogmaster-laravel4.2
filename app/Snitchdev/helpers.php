@@ -63,6 +63,6 @@ function do_boolean_publish($post, $item, $id, $bool){
 }
 
 function get_read_more($id,$link_string,$excerpt,$limit) {
-        $read_more = strlen($excerpt) > $limit ? HTML::link($link_string, $id) : '.';
+        $read_more = strlen($excerpt) > $limit ? '...' . HTML::link($link_string, $id) : '.';
         return $read_more;
 }

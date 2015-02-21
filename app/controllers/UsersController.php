@@ -12,7 +12,6 @@ class UsersController extends \BaseController {
     }
    
     public function create(){
-        //create the register form
         return View::make('users.create');
     }
    
@@ -21,19 +20,15 @@ class UsersController extends \BaseController {
     }
    
     public function update(){
-        //update the user
     }
 
     public function store(){
-        //store the input in $var
         $input = Input::only('username','email','password','password_confirmation');
-        //Validate $var
         $this->userRegValidation->validate($input);
-        //create record using validated $var
         User::create($input); 
-        $get_user = User::whereEmail($input['email'])->first();
+        
+        $get_user = User::whereUsername($input['username'])->first();
         Settings::create(['user_id' => $get_user->id]); 
-        //redirect to login
         return Redirect::route('login');
     }
 

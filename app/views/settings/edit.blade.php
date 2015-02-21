@@ -1,11 +1,16 @@
 @extends('_templates.forms')
 @section('content')
-    {{Form::model($user->settings, ['method'=>'PATCH', 'route' => ['settings.update_username', $user->username]])}}
+    {{--General--}}
+    {{Form::model($user->settings, ['method'=>'PATCH', 'route' => ['update_displayname', $user->username]])}}
     {{ Form::text('display_name', null, ['placeholder' => 'Display Name']) }}<br>
     {{ Form::submit('Submit') }}
-    {{Form::close()}}<br>
-    <hr>
-    {{Form::model($user->categories, ['method'=>'PATCH', 'route' => ['settings.update_categories', $user->username]])}}
-    Category Updates go here!
+    {{Form::close()}}<br><hr>
+    {{--Categories--}}
+    {{Form::open(['route' => 'create_and_store_category'])}}
+    	@foreach($category as $cat)
+    	<h3>{{$cat->name}}</h3>
+    	@endforeach
+    	{{ Form::text('category', null, ['placeholder' => 'Add Category']) }}<br>
+    	{{ Form::submit('Submit') }}
     {{Form::close()}}<br>
 @stop
