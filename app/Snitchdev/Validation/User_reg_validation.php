@@ -2,11 +2,11 @@
 
 use Laracasts\Validation\FormValidator;
 
-class UserRegValidation extends FormValidator{
+class User_reg_validation extends FormValidator{
         
     protected $rules = [
-        'username' => 'required',
-        'email'    => 'required', 
+        'username' => 'required|unique:users',
+        'email'    => 'required|unique:users', 
         'password' => 'required|confirmed'
     ];
 }

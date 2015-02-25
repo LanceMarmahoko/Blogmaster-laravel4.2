@@ -128,6 +128,8 @@ return array(
                 'Mews\Purifier\PurifierServiceProvider', //has alias //HTML Purifier is a standards-compliant HTML filter library written in PHP
                 'Cviebrock\EloquentSluggable\SluggableServiceProvider',
                 'Cviebrock\EloquentTaggable\TaggableServiceProvider',
+                'Intervention\Image\ImageServiceProvider',
+                
 
 	),
 
@@ -199,6 +201,7 @@ return array(
 		'Flash'             => 'Laracasts\Flash\Flash',
         'Entrust'           => 'Zizaco\Entrust\EntrustFacade',
         'Purifier'          => 'Mews\Purifier\Facades\Purifier',
+        'Image' 			=> 'Intervention\Image\Facades\Image',
 
 	),
 

@@ -1,6 +1,6 @@
 <ul>         
 @if (Auth::guest())
-    <li>{{HTML::linkRoute('registeruser', 'Register') }}</li>
+    <li>{{HTML::linkRoute('register_user', 'Register') }}</li>
     <li>{{HTML::linkRoute('login', 'Login') }}</li>
 @else
     <li>{{HTML::linkRoute('home', 'View Site') }}</li>

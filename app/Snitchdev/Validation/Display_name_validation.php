@@ -2,10 +2,9 @@
 
 use Laracasts\Validation\FormValidator;
 
-class PostValidation extends FormValidator{
+class Display_name_validation extends FormValidator{
         
     protected $rules = [
-        'title' => 'required',
-        'body' => 'required'
+        'display_name' 	=> 'unique:settings'
     ];
 }

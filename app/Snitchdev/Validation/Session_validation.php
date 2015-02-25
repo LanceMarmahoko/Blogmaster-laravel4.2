@@ -2,10 +2,10 @@
 
 use Laracasts\Validation\FormValidator;
 
-class SessionValidation extends FormValidator{
+class Session_validation extends FormValidator{
         
     protected $rules = [
-        'email' => 'required',
+        'email' => 'required|email',
         'password' => 'required'
     ];
 }

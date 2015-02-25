@@ -1,27 +1,35 @@
 <?php
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 class PagesController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /pages
-	 *
-	 * @return Response 
-	 */
-    public function __construct() { 
+    public function __construct(){ 
+
+        //Which controllers should be filtered?
         $this->beforeFilter('currentUser', ['only' => ['dashboard']]);
     }
 
     public function index(){
-        $posts = Post::wherePublished(true)->orderBy('id', 'DESC')->get();
+        //homepage prep, display published posts
+        $posts = Post::wherePublish_status(true)->orderBy('id', 'DESC')->get(); //pagination
         return View::make('index',compact('posts'));
     }
 
+    public function show($id){
+        //show post prep
+    try{
+        $post = Post::with('user')->wherePublish_status(true)->findOrFail($id);
+    }
 
+    catch (ModelNotFoundException $e) {
+        $error = "The Post with the id <strong>{$id}</strong> was not found!";
+        return View::make('ErrorPage', compact('error'));
+    }
+        return View::make('posts.show', compact('post'));
+}
     public function dashboard(){
-        $published = Post::wherePublished(true)->orderBy('id', 'DESC')->get();
-        $unpublished = Post::wherePublished(false)->orderBy('id', 'DESC')->get();
-        $trashed = Post::onlyTrashed()->orderBy('id', 'DESC')->get();
+        $published = Post::wherePublish_status(true)->orderBy('id', 'DESC')->get();  //pagination
+        $unpublished = Post::wherePublish_status(false)->orderBy('id', 'DESC')->get();  //pagination
+        $trashed = Post::onlyTrashed()->orderBy('id', 'DESC')->get();  //pagination
         return View::make('dashboard.show',compact('published', 'unpublished','trashed'));
     }
 

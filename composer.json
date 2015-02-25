@@ -14,7 +14,8 @@
 		"barryvdh/laravel-ide-helper": "~1.11",
         "cviebrock/eloquent-sluggable": "2.*",
         "cviebrock/eloquent-taggable": "0.*",
-		"mews/purifier": "dev-master"
+		"mews/purifier": "dev-master",
+		"intervention/image": "~2.1"
 	},
 	"require-dev": {
     	"way/generators": "~2.0",

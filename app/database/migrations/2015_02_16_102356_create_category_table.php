@@ -16,6 +16,8 @@ class CreateCategoryTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('slug')->unique();
+			$table->string('default_image');
+			$table->string('thumbnail');
 			$table->timestamps();
 		});
 	}

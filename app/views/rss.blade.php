@@ -13,7 +13,7 @@
 @foreach($posts as $post)
 <entry>
     <title>{{$post->title}}</title>
-    <link>{{URL::route('showpost', $post->id)}}</link>
+    <link>{{URL::route('show_post', $post->id)}}</link>
     <id>...</id>
     <updated>...</updated>
     <summary>
