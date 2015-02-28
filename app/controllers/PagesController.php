@@ -11,7 +11,8 @@ class PagesController extends \BaseController {
     public function index(){
         //homepage prep, display published posts
         $posts = Post::wherePublish_status(true)->orderBy('id', 'DESC')->get(); //pagination
-        return View::make('index',compact('posts'));
+        // return View::make('index',compact('posts'));
+        return $posts;
     }
 
     public function show($id){
@@ -24,7 +25,8 @@ class PagesController extends \BaseController {
         $error = "The Post with the id <strong>{$id}</strong> was not found!";
         return View::make('ErrorPage', compact('error'));
     }
-        return View::make('posts.show', compact('post'));
+        // return View::make('posts.show', compact('post'));
+        return $post;
 }
     public function dashboard(){
         $published = Post::wherePublish_status(true)->orderBy('id', 'DESC')->get();  //pagination
