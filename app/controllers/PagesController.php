@@ -10,7 +10,7 @@ class PagesController extends \BaseController {
 
     public function index(){
         //homepage prep, display published posts
-        $posts = Post::wherePublish_status(true)->orderBy('id', 'DESC')->get(); //pagination
+        $posts = Post::wherePublish_status(true)->orderBy('id', 'DESC')->paginate(10);
         // return View::make('index',compact('posts'));
         // return $posts;
         return Response::json($posts)->setCallback(Input::get('callback'));
@@ -30,9 +30,9 @@ class PagesController extends \BaseController {
         return $post;
 }
     public function dashboard(){
-        $published = Post::wherePublish_status(true)->orderBy('id', 'DESC')->get();  //pagination
-        $unpublished = Post::wherePublish_status(false)->orderBy('id', 'DESC')->get();  //pagination
-        $trashed = Post::onlyTrashed()->orderBy('id', 'DESC')->get();  //pagination
+        $published = Post::wherePublish_status(true)->orderBy('id', 'DESC')->paginate(10);  //pagination
+        $unpublished = Post::wherePublish_status(false)->orderBy('id', 'DESC')->paginate(10);  //pagination
+        $trashed = Post::onlyTrashed()->orderBy('id', 'DESC')->paginate(10);  //pagination
         return View::make('dashboard.show',compact('published', 'unpublished','trashed'));
     }
 
