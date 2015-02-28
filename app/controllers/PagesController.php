@@ -12,7 +12,8 @@ class PagesController extends \BaseController {
         //homepage prep, display published posts
         $posts = Post::wherePublish_status(true)->orderBy('id', 'DESC')->get(); //pagination
         // return View::make('index',compact('posts'));
-        return $posts;
+        // return $posts;
+        return Response::json($posts)->setCallback(Input::get('callback'));
     }
 
     public function show($id){
