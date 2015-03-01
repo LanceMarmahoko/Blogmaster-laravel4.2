@@ -1,7 +1,125 @@
+.avatar{
+    width:100%;
+}
+.avatar img {
+    border-radius: 20px;
+    width: 3%;
+}
+
+ a{
+   font-family: "Roboto",sans-serif !important;
+    font-weight: 300 !important; 
+    color:#4d4848 !important;
+ 
+}
+
+ a:hover{
+    color:#1c6f80 !important;
+    border-radius:7px;
+}
+.buton{
+    
+    background: none repeat scroll 0 0 #1c6f80;
+    border-radius: 7px 7px 0 0;
+    color: #ffffff;
+    font-family: "Roboto",sans-serif;
+    font-weight: 100;
+}
+
+.buton:hover{
+     background: none repeat scroll 0 0 #0d5080;
+    color:#fff;
+}
+
+hr{
+    margin: 10px;
+}
+
 nav{
     border-radius: 0 !important;
 }
 
+.nav > li.right-menu {
+    display: block;
+    float: right;
+    font-family: "Roboto",sans-serif;
+    font-weight: 100;
+    position: relative;
+}
+.nav > li {
+    display: block;
+    float: left;
+    font-family: "Roboto",sans-serif;
+    font-weight: 100;
+    position: relative;
+}
+
 body{
     padding-top: 0px !important;
+}
+
+.padd-space{
+    margin: 20px 0px;
+}
+.banners{
+    background: none repeat scroll 0 0 #1c6f80;
+}
+
+.headings{
+    color: #ffffff;
+    font-family: "Roboto",sans-serif;
+    font-size: 90px;
+    font-weight: 100;
+    margin-right: 170px;
+}
+
+.headings-disply{
+    color: #1c6f80;
+    font-family: "Roboto",sans-serif;
+    font-size: 90px;
+    font-weight: 100;
+    margin-right: 170px;
+}
+
+.margin-none{
+    margin:0;
+}
+.labels{
+    color: #4d4848;
+    font-family: "Roboto",sans-serif;
+    font-size: 1.6em;
+    font-weight: 100;
+    
+}
+
+form {
+    margin: 40px 128px;
+}
+
+form input{
+    border: thin solid #1c6f80;
+    border-radius: 19px;
+    font-family: "Roboto",sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    margin-top: 1em;
+    padding: 0.6em;
+    background:none;
+}
+
+form input:hover{
+    color:#ffffff;
+    background: #1c6f80;
+}
+
+footer {
+    bottom: 0;
+    position: relative;
+}
+
+footer p{
+    color: #1c6f80;
+    font-family: "Roboto",sans-serif;
+    font-size: 1.5em;
+    text-indent: 2em;
 }

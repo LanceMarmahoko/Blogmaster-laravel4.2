@@ -24,8 +24,7 @@ class PagesController extends \BaseController {
         $error = "The Post with the id <strong>{$id}</strong> was not found!";
         return View::make('ErrorPage', compact('error'));
     }
-        // return View::make('posts.show', compact('post'));
-        return $post;
+        return View::make('posts.show', compact('post'));
 }
     public function dashboard(){
         $published = Post::wherePublish_status(true)->orderBy('id', 'DESC')->paginate(10);  //pagination
