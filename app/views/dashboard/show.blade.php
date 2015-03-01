@@ -1,10 +1,17 @@
 @extends('_templates.master')
 
 @section('content')
+<div class="row">
+<div class=" banners col-sm-12 text-left">
+        <h1 class="headings col-sm-4">
+         Dashboard
+        </h1>
+</div>
+</div>
 <div>
     <ul>
         @foreach($published as $published)
-            {{$published->title}}<br>
+            <h1 class="headings-disply">{{$published->title}}</h1><br>
             {{$published->created_at->diffForHumans()}}<br>
 
             <a href="/post/{{$published->id}}/edit"  class='btn btn-xs'>Edit</a><br>
