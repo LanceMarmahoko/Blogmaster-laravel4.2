@@ -49,10 +49,10 @@ class PostsController extends \BaseController {
     }
 
     public function update($id){
-
         $post = Post::whereId($id)->firstOrFail();
         $input = Input::only('title','body','category_id');
          $IsValidated = $this->post_validation->validate($input); 
+
         if ($IsValidated){
             $image = null !== Input::file('image') ? prepare_image('image','category_id') : get_value('image',$id,'Post');
             $data = [
