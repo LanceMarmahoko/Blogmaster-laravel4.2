@@ -19,6 +19,7 @@
     {{--Categories--}}
 
 <span class="labels">Add category</span>
+
     {{Form::open(['route' => 'create_and_store_category', 'files'=>true])}}
         {{ Form::text('category', null, ['placeholder' => 'Add Category']) }}<br>
         {{errors_for('category', $errors)}}
@@ -28,9 +29,14 @@
     {{Form::close()}}<br>
 
     @foreach($category as $cat)
-        <ul>
-         <li>{{HTML::image($cat->thumbnail)}}<h3>{{$cat->name}}</h3></li>   
-        </ul>
+    <div class="media col-sm-12">
+      <div class="media-left">
+          {{HTML::image($cat->thumbnail)}}
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{$cat->name}}</h4>
+      </div>
+    </div>   
     @endforeach
 
 @stop

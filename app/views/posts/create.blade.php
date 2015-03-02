@@ -4,8 +4,9 @@
 <div class="row">
     <div class=" banners col-sm-12 text-left">
         <h1 class="headings">
-          Blog creation
+          Create a Post
         </h1>
+        <h3 class="writer-quote">“The more you leave out, the more you highlight what you leave in.” <small>― Henry Green</small></h3>
     </div>
 </div>
 <div class="row">
@@ -27,5 +28,9 @@
 @stop
 
 @section('sidebar')
-    Side Bar
 @stop
+@section('footer_editor')
+    @include('partials.footer_editor') 
+@stop
+
+

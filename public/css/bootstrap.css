@@ -5934,7 +5934,7 @@ button.close {
 }
 
 .modal-open {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .modal {

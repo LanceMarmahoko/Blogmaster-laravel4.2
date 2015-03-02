@@ -23,6 +23,7 @@
     @yield('sidebar')
 </div>
 </div>
+@include('partials.footer_editor')
 @include('partials.footer')
 
 

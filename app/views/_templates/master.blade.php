@@ -2,7 +2,7 @@
 @include('partials.nav') 
 @include('partials.notifications.flash_messages') 
 
-<div class="col-sm-12">
+<div class="col-sm-12 main">
     @yield('content')
 </div>
 
