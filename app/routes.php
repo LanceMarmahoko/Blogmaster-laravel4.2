@@ -17,6 +17,7 @@ Page Routes
 */
 Route::get('/',['as' => 'home', 'uses' => 'SessionsController@create']);
 Route::get('/dashboard',['as' => 'dashboard', 'uses' => 'PagesController@dashboard']);
+Route::get('/json',['as' => 'json', 'uses' => 'PagesController@index']);
 
 /*
 Feed Routes
