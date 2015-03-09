@@ -15,16 +15,8 @@ class PagesController extends \BaseController {
     }
 
     public function show($id){
-        //show post prep
-    try{
         $post = Post::with('user')->wherePublish_status(true)->findOrFail($id);
-    }
-
-    catch (ModelNotFoundException $e) {
-        $error = "The Post with the id <strong>{$id}</strong> was not found!";
-        return View::make('ErrorPage', compact('error'));
-    }
-        return View::make('posts.show', compact('post'));
+        return Response::json($post)->setCallback(Input::get('callback'));
 }
     public function dashboard(){
         $published = Post::wherePublish_status(true)->orderBy('id', 'DESC')->paginate(10);  //pagination
