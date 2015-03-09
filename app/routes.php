@@ -1,5 +1,8 @@
 <?php
 
+
+header('Access-Control-Allow-Origin: http://104.236.104.177/json');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
