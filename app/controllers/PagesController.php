@@ -16,7 +16,7 @@ class PagesController extends \BaseController {
 
     public function show($id){
         $post = Post::with('user')->wherePublish_status(true)->findOrFail($id);
-        return View::make('posts.show',compact('posts'));
+        return View::make('posts.show',compact('post'));
 }
     public function dashboard(){
         $published = Post::wherePublish_status(true)->orderBy('id', 'DESC')->paginate(10);  //pagination
