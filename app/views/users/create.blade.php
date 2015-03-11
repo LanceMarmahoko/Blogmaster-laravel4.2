@@ -1,6 +1,13 @@
 @extends('_templates.forms')
 
 @section('content')
+<div class="row">
+    <div class=" banners col-sm-12 text-left">
+        <h1 class="headings">
+          Register
+        </h1>
+    </div>
+</div>
     {{Form::open(['route' => 'register_user'])}}
 	    {{ Form::text('username', null, ['placeholder' => 'Username']) }}<br>
 	    {{errors_for('username', $errors)}}

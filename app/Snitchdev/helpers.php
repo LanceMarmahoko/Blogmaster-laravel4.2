@@ -26,7 +26,7 @@ function prepare_image($image){
 
 function get_default($category_id){
     $id = Input::only($category_id);
-    $category_name = get_value('name',$id,'category');
+    $category_name = get_value('name',$id,'Category');
     $file_name = get_value('default_image',$id,'category');
     $image_path = $file_name;
     //thats it!
